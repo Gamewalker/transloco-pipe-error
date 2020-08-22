@@ -1,0 +1,65 @@
+<div>
+  Weitere Informationen auf https://netbasal.gitbook.io/transloco/ <br/>
+  <br/>
+  <br/>
+  {{ 'i18n.test' | transloco }}<br/>
+  <br/>
+  {{ text1 | async }}<br/>
+  {{ text2 | async }}<br/>
+
+  <ul>
+    <li>{{'demo.things' | transloco:{ count: 0 } }}</li>
+    <li>{{'demo.things' | transloco:{ count: 1 } }}</li>
+    <li>{{'demo.things' | transloco:{ count: 2 } }}</li>
+  </ul>
+  <ul>
+    <li>{{'demo.people' | transloco:{ gender: 'female', name: 'Sarah' } }}</li>
+    <li>{{'demo.people' | transloco:{ gender: 'male', name: 'Peter' } }}</li>
+    <li>{{'demo.people' | transloco:{ name: 'Sarah + Peter' } }}</li>
+  </ul>
+
+
+  <!--9/10/2019-->
+  <div> {{ date | translocoDate }} </div>
+  <!-- Sep 10, 2019, 10:46:12 PM-->
+  <div>
+    {{ date | translocoDate: { dateStyle: 'medium', timeStyle: 'medium' } }}
+  </div>
+  <!-- 7:40:32 PM Coordinated-->
+  <div>
+    {{ date | translocoDate: { timeZone: 'UTC', timeStyle: 'full' } }}
+  </div>
+  <!-- Jan 1, 1970-->
+  <div>
+    {{ 1 | translocoDate: { dateStyle: 'medium' } }}
+  </div>
+
+
+
+  <!--$1,000,000.00-->
+  <div> {{ 1000000 | translocoCurrency }} </div>
+  <!--1,000,000.00 US dollars-->
+  <div>
+    {{ 1000000 | translocoCurrency: 'name' }}
+  </div>
+  <!--$1,000,000-->
+  <div>
+    {{ 1000000 | translocoCurrency: 'symbol' : { minimumFractionDigits: 0 } }}
+  </div>
+
+
+
+  <!--1,234,567,890-->
+  <div>
+    {{ 1234567890 | translocoDecimal }}
+  </div>
+  <!--1234567890-->
+  <div>
+    {{ 1234567890 | translocoDecimal: {useGrouping: false} }}
+  </div>
+
+  <!--100%-->
+  <div>{{ 1 | translocoPercent }}</div>
+</div>
+
+<i18n-language-changer></i18n-language-changer>
